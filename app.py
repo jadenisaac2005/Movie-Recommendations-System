@@ -1,4 +1,5 @@
 import pandas as pd
+import streamlit as st
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -40,16 +41,29 @@ def get_recommendations(title, cosine_sim=cosine_sim):
     # Return the top 5 most similar movies
     return movies['title'].iloc[movie_indices].tolist()
 
-# --- Let's test our function! ---
-# You can comment out or remove these lines when you build the Streamlit app
-print("Backend logic is set up. Testing the recommendation function...")
+# --- FRONTEND ---
+st.title('🎬 Movie Recommendation System')
+st.write("Find movies similar to your favorites based on their genres.")
 
-movie_title = 'Dark Knight, The (2008)'
-recommendations = get_recommendations(movie_title)
-print(f"\nRecommendations for '{movie_title}':")
-print(recommendations)
+# Create a list of all movie titles for the dropdown menu
+movie_list = movies['title'].unique()
 
-movie_title = 'Toy Story (1995)'
-recommendations = get_recommendations(movie_title)
-print(f"\nRecommendations for '{movie_title}':")
-print(recommendations)
+# Create a select box with a placeholder and no default selection
+selected_movie = st.selectbox(
+    "Type or select a movie from the dropdown",
+    movie_list,
+    index=None,  # This makes the default selection empty
+    placeholder="Select a movie..."
+)
+
+# Create a button to trigger the recommendation
+if st.button('Recommend'):
+    # Add a check to ensure a movie was selected
+    if selected_movie:
+        with st.spinner('Finding recommendations...'):
+            recommendations = get_recommendations(selected_movie)
+            st.subheader(f"Because you liked {selected_movie}, you might also like:")
+            for movie_title in recommendations:
+                st.success(movie_title)
+    else:
+        st.warning("Please select a movie first.")
