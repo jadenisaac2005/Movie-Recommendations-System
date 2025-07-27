@@ -11,7 +11,6 @@ A content-based movie recommendation engine that suggests similar movies based o
 - **Real-time Recommendations**: Instantly get a list of 5 similar movies.
 - **Content-Based Filtering**: The recommendation logic is powered by genre similarity using TF-IDF and Cosine Similarity.
 - **Interactive UI**: A clean and user-friendly interface built with Streamlit.
-- **Dynamic Movie Posters**: Fetches and displays movie posters from the TMDB API to create a visually engaging experience.
 
 ---
 
@@ -21,7 +20,6 @@ A content-based movie recommendation engine that suggests similar movies based o
 - **Pandas**: For loading and managing the dataset.
 - **Scikit-learn**: For building the recommendation model (TF-IDF Vectorizer, Cosine Similarity).
 - **Streamlit**: To create and serve the interactive web application.
-- **Requests**: For making API calls to The Movie Database (TMDB).
 
 ---
 
@@ -68,11 +66,6 @@ Make sure you have Python 3.8+ installed on your system.
     - Create a `data` folder in your project directory.
     - Place the `movies.csv` file inside the `data` folder.
 
-4.  **Add TMDB API Key:**
-    - Get a free API key from [The Movie Database (TMDB)](https://www.themoviedb.org/documentation/api).
-    - Open the `app.py` file and find the `fetch_poster` function.
-    - Replace the placeholder `"YOUR_API_KEY"` with your actual key.
-
 ---
 
 ## 🖥️ Usage
@@ -82,3 +75,25 @@ Once the setup is complete, you can launch the Streamlit web application with a 
 ```bash
 streamlit run app.py
 ```
+
+---
+
+## 💡 Future Improvements
+
+This project provides a solid foundation. Here are some ways it could be enhanced:
+
+- **Implement Collaborative Filtering**: Use the ratings.csv file to build a model that recommends movies based on the tastes of similar users.
+- **Build a Hybrid Recommender**: Combine the current content-based model with a collaborative filtering model for more accurate and diverse recommendations.
+- **Add More Content Features**: Enhance the content-based model by including movie cast, director, and keywords in the similarity calculation.
+- **Deploy to the Cloud**: Deploy the Streamlit app to a service like Streamlit Community Cloud or Heroku to make it publicly accessible.
+
+---
+
+## 📬 Contact
+
+Jaden Isaac – A B.Tech AI & ML student passionate about building useful projects and exploring the world of technology.
+
+Feel free to reach out with any questions or feedback!
+
+- **GitHub**: [github.com/jadenisaac2005](https://github.com/jadenisaac2005)
+- **LinkedIn**: [linkedin.com/in/jaden-isaac](https://linkedin.com/in/jaden-isaac)
